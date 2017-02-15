@@ -1,0 +1,97 @@
+\documentclass[12pt]{article}
+\usepackage{fullpage,graphicx,psfrag,amsmath,amsfonts,verbatim}
+\usepackage[small,bf]{caption}
+\usepackage{hyperref}
+
+
+\bibliographystyle{alpha}
+
+\title{Discovering signals in fMRI data; 
+a multiple-testing, Bayesian nonparametric approach   \\ \large{Project Proposal for STAT308}}
+\author{Ahmed Bou-Rabee, Wanrong Zhu, Zheng Xu, Mo Zhou}
+
+\begin{document}
+\maketitle
+
+{\bf Introduction } 
+
+The goal of this project is to formulate and test a method which can be used to adaptively identify 
+clusters of signals in functional magnetic resonance imaging (fMRI) data. 
+Roughly, fMRI measures the change in brain blood flow associated 
+with mental activity \cite{huettel2004functional}. The brain is divided into regions known as voxels, and the intensity 
+of the blood flow over each voxel is recorded at evenly spaced time intervals while the subject is stimulated. The data is then in the form 
+(voxel, time, intensity of reading). For example, suppose researchers wanted to identify regions 
+of the brain associated with hunger or craving. To aid in this, fMRI readings can be taken while subjects are shown pictures of pizza and hamburgers. 
+
+An advantage of using fMRI is that it's a noninvasive procedure.  Due to this, there are many publicly available datasets \cite{poldrack2013toward}.
+However, analyzing fMRI data poses many statistical challenges, one of them being the multiple comparisons problem. 
+ Any sampling procedure involves error.  Because there are typically thousands of voxels, it's likely that regions 
+ may have high readings, but not be statistically significant.  Also, nearby readings are likely correlated.  If researchers 
+ wanted to identify clusters of voxels which are significant over time, this introduces an additional challenge. 
+ 
+ 
+ XXX  explain what previous work has done.  e.g. reference Rina's paper \cite{foygel2015p} 
+
+ For our purposes, we are going to assume that the intensity of the reading is given to us in the form of a p-value between 0 and 1. 
+ This corresponds to the hypothesis that 
+ at time i voxel j is significant . Just like Rina's paper. 
+ 
+ This has been done in the literature
+ 
+   
+
+In our project, we will focus on two questions: 
+\begin{itemize}
+\item Can we adaptively identify entire regions of the brain (not just voxels) which are associated with the stimulus while
+accounting for multiple testing error?
+\item There is no response variable in fMRI data, so how can we reliably test our algorithm? 
+\end{itemize}
+
+Here is an outline on how we'll tackle these two topics. 
+
+{\bf Adaptively identifying regions of interest} 
+Research has already worked on how to identify significant voxels of interest and also regions if those
+regions are already given to the statistician.  One particular issue we want to focus on 
+is identifying "regions of interest" adaptively, instead of using predefined ones.  
+Here's one idea we have for doing so. 
+
+If we assume that the data is generated according to a Hierarchial Bayesian 
+process and then identify the posterior distribution, we automatically answer the question
+without any multiple testing problems. 
+
+We assume that the data is generated in the following way. 
+\begin{enumerate}
+\item  For each location $\zeta_i$, generate a prior distribution $F_i$ which is drawn 
+from a prior $\Phi$ on the set of prior distributions which have clusters. 
+
+
+\item For each location $\zeta_i$ generate the intensity according to the prior $F_i$ 
+\end{enumerate}
+
+
+
+Once we have identified prior distributions, we identify clusters of high activity 
+by picking clusters which have a distribution that is sufficiently far
+away from uniform.  Kullback?Leibler divergence from uniform 
+
+
+{\bf Testing the algorithm } 
+
+Second question: 
+Resample from the data and see how "different" nonparametric algorithm is. 
+
+
+
+
+What datasets will we be working with?  Do we have any baselines for comparison? 
+First test will be Rina's data. 
+
+
+ 
+\bibliography{bibliography}
+
+
+
+\end{document}
+
+
