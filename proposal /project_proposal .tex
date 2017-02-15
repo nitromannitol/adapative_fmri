@@ -25,66 +25,64 @@ of the brain associated with hunger or craving. To aid in this, fMRI readings ca
 
 An advantage of using fMRI is that it's a noninvasive procedure.  Due to this, there are many publicly available datasets \cite{poldrack2013toward}.
 However, analyzing fMRI data poses many statistical challenges, one of them being the multiple comparisons problem. 
- Any sampling procedure involves error.  Because there are typically thousands of voxels, it's likely that regions 
- may have high readings, but not be statistically significant.  Also, nearby readings are likely correlated.  If researchers 
- wanted to identify clusters of voxels which are significant over time, this introduces an additional challenge. 
- 
- 
- XXX  explain what previous work has done.  e.g. reference Rina's paper \cite{foygel2015p} 
+ Any sampling procedure involves error.  Because there are typically thousands of voxels, it's likely that individual voxels 
+ may have high readings, but not be statistically significant.  Also, the noise of a reading is typically dependent on location, i.e., it is heteroscedasticic.
+ Identifying clusters (not just individual voxels) introduces an additional challenge. 
 
- For our purposes, we are going to assume that the intensity of the reading is given to us in the form of a p-value between 0 and 1. 
- This corresponds to the hypothesis that 
- at time i voxel j is significant . Just like Rina's paper. 
+ % XXX  explain what previous work has done.  e.g. reference Rina's paper \cite{foygel2015p} 
+ %For our purposes, we are going to assume that the intensity of the reading is given to us in the form of a p-value between 0 and 1. 
+ %This corresponds to the hypothesis that 
+ %at time i voxel j is significant . Just like Rina's paper. 
+ %This has been done in the literature
  
- This has been done in the literature
- 
-   
+\vspace{1em}
 
-In our project, we will focus on two questions: 
+{\bf Project Goals } 
+\vspace{0.5em} 
+
+For the purposes of our project, we will assume, like \cite{foygel2015p}, that the data given to us is of the form (voxel, time, p-value). We will instead focus on two questions: 
 \begin{itemize}
 \item Can we adaptively identify entire regions of the brain (not just voxels) which are associated with the stimulus while
 accounting for multiple testing error?
 \item There is no response variable in fMRI data, so how can we reliably test our algorithm? 
 \end{itemize}
-
-Here is an outline on how we'll tackle these two topics. 
-
-{\bf Adaptively identifying regions of interest} 
-Research has already worked on how to identify significant voxels of interest and also regions if those
-regions are already given to the statistician.  One particular issue we want to focus on 
-is identifying "regions of interest" adaptively, instead of using predefined ones.  
-Here's one idea we have for doing so. 
-
-If we assume that the data is generated according to a Hierarchial Bayesian 
-process and then identify the posterior distribution, we automatically answer the question
-without any multiple testing problems. 
-
-We assume that the data is generated in the following way. 
+\vspace{1em}
+{\bf Adaptively identifying regions of interest}  \\
+%add some more examples of existing work 
+Some existing work, e.g.,  \cite{foygel2015p},  has developed methods which identify significant voxels and  predefined regions of interest. 
+These methods presuppose that regions of interest have already been identified by, say, biologists. We would like to focus on 
+identifying these regions adaptively, rather than using predefined ones. One idea we have for doing so involves 
+a non-parametric Bayesian procedure.  Let's assume that the data is generated according to the following Bayesian 
+process. 
 \begin{enumerate}
-\item  For each location $\zeta_i$, generate a prior distribution $F_i$ which is drawn 
-from a prior $\Phi$ on the set of prior distributions which have clusters. 
-
-
-\item For each location $\zeta_i$ generate the intensity according to the prior $F_i$ 
+\item  For each location and time (i,j),  generate a Beta distribution $Beta(\alpha_{ij}, \beta_{ij})$, 
+where $(\alpha_i, \beta_i)$ is drawn from a prior distribution on distributions $\Phi$ which incorporates time and spatial information. 
+\item For each location $i,j$ generate the corresponding p-value by making a random draw from $Beta(\alpha_{ij}, \beta_{ij})$. 
 \end{enumerate}
+
+
+Then, given our set of data , we can identify, computationally, the maximum posterior likelihood and 
+automatically answer this question without any multiple testing problems, while accounting for noise which is correlated with location. 
+
+XX 
+
+
+
+
 
 
 
 Once we have identified prior distributions, we identify clusters of high activity 
 by picking clusters which have a distribution that is sufficiently far
-away from uniform.  Kullback?Leibler divergence from uniform 
+away from uniform.  Kullback-Leibler divergence from uniform 
 
 
 {\bf Testing the algorithm } 
 
-Second question: 
-Resample from the data and see how "different" nonparametric algorithm is. 
+We will reimplement p-filter paper and test against it.  We will also find 2 other datasets and test p-filter and our algorithm against it. 
 
+We will also do a resampling procedure and test the variance of our nonparametric algorithm. 
 
-
-
-What datasets will we be working with?  Do we have any baselines for comparison? 
-First test will be Rina's data. 
 
 
  
