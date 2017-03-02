@@ -1,0 +1,29 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  15 FEB 2017 12:39
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**defs.tex
+(./defs.tex
+LaTeX2e <2015/01/01>
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
+\c@theorem=\count79
+\c@oursection=\count80
+\c@lecture=\count81
+)
+*
+! Emergency stop.
+<*> defs.tex
+            
+End of file on the terminal!
+
+ 
+Here is how much of TeX's memory you used:
+ 130 strings out of 493089
+ 800 string characters out of 6134842
+ 53199 words of memory out of 5000000
+ 3715 multiletter control sequences out of 15000+600000
+ 3640 words of font info for 14 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 9i,0n,14p,136b,8s stack positions out of 5000i,500n,10000p,200000b,80000s
+!  ==> Fatal error occurred, no output PDF file produced!
