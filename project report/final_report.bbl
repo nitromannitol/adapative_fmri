@@ -1,0 +1,21 @@
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{PBM{\etalchar{+}}13}
+
+\bibitem[HSM04]{huettel2004functional}
+Scott~A Huettel, Allen~W Song, and Gregory McCarthy.
+\newblock {\em Functional magnetic resonance imaging}, volume~1.
+\newblock Sinauer Associates Sunderland, 2004.
+
+\bibitem[PBM{\etalchar{+}}13]{poldrack2013toward}
+Russell~A Poldrack, Deanna~M Barch, Jason Mitchell, Tor Wager, Anthony~D
+  Wagner, Joseph~T Devlin, Chad Cumba, Oluwasanmi Koyejo, and Michael Milham.
+\newblock Toward open sharing of task-based fmri data: the openfmri project.
+\newblock {\em Frontiers in neuroinformatics}, 7:12, 2013.
+
+\bibitem[Ste00]{stephens2000bayesian}
+Matthew Stephens.
+\newblock Bayesian analysis of mixture models with an unknown number of
+  components-an alternative to reversible jump methods.
+\newblock {\em Annals of statistics}, pages 40--74, 2000.
+
+\end{thebibliography}

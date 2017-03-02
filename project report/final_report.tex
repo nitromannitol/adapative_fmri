@@ -1,0 +1,82 @@
+\documentclass[12pt]{article}
+\usepackage{fullpage,graphicx,psfrag,amsmath,amsfonts,verbatim}
+\usepackage[small,bf]{caption}
+\usepackage{hyperref}
+
+\input defs.tex
+
+
+\bibliographystyle{alpha}
+
+\title{Discovering signals in fMRI data; 
+a Bayesian nonparametric approach   \\ \large{Final project for STAT308}}
+\author{Ahmed Bou-Rabee, Wanrong Zhu, Zheng Xu, Mo Zhou}
+
+\begin{document}
+\maketitle
+
+\section{Introduction} 
+
+In this paper we formulate and test a method which can be used to adaptively identify 
+clusters of signals in functional magnetic resonance imaging (fMRI) data. 
+Roughly, fMRI measures the change in brain blood flow associated 
+with mental activity \cite{huettel2004functional}. The brain is divided into tiny blocks known as voxels, and the intensity 
+of the blood flow over each voxel is recorded at evenly spaced time intervals while the subject is stimulated. For example, suppose researchers wanted to identify regions 
+of the brain associated with hunger or craving. To aid in this, fMRI readings can be taken while hungry subjects are shown pictures of food. 
+
+An advantage of using fMRI is that it's a noninvasive procedure.  Due to this, there are many publicly available datasets \cite{poldrack2013toward}.
+However, analyzing fMRI data poses many statistical challenges, one of them being the multiple comparisons problem. 
+ Any sampling procedure involves error.  Because there are typically hundreds of thousands voxels, it's likely that individual voxels 
+ may have high readings, but not be statistically significant.  Also, the noise of a reading is typically dependent on location, \ie, it is heteroscedasticic.
+ Identifying significant clusters (not just individual voxels) introduces an additional challenge. 
+ 
+ In this paper, we explore a way of estimating significant clusters in fMRI using a Bayesian method. 
+
+\section{Method}
+%%word this better
+Let $\mathcal{P} = [0,1]$ be our sample space and let $\mathcal{D}$ represent location-time space, (for example $\mathcal{D} = \reals^3 \times \reals^+$).
+Suppose we have $n$ data points $(p_1, d_1), \ldots, (p_n, d_n)$ where $p_i \in \mathcal{P}$ and $d_i \in \mathcal{D}$. 
+The p-value $p_i$ represents our belief in $d_i$ being a null feature. That is, our belief that the brain voxel at that point in time is not correlated 
+with the stimulus.  
+
+Signals (features associated with the stimulus) in fMRI data typically tend to be sparse.  That is, most of the $\omega_i$ are likely null signals (features not associated with the stimulus )
+and so are drawn from a $\Unif(0,1)$ distribution.  But, there are typically a few number of unknown signal clusters,  let's say $k$,
+which are clustered spatially in $\mathcal{D}$.  These $\omega_i$ are drawn from some $\Beta(1/\beta_j, \beta_j)$ distribution where $\beta_j > 2$ for $j = 1, \ldots, k$.  
+
+We encode these beliefs in the following prior for our data:
+\begin{enumerate}
+\item (number of signal clusters) $k \sim$ Truncated Poisson$(\lambda_i,  1, k_{max})$
+\item (signal centers)  $c_j \sim \Unif(\mathcal{D})$ for $j = 1, \ldots, k$
+\item (signal radius )  $r_j \sim \mbox{Truncated Normal}(2,10,2,10)$ for $j = 1, \ldots k$
+\item  (signal strength) $\beta_j \sim \Unif(2,10)$ for $j = 1, \ldots, k$. 
+\item (data in signal clusters) $x_i \sim \Beta(1/\beta_j, \beta_j)$, where $x_i$ is in cluster $j$
+\item (data not in signal clusters) $x_i \sim \Unif(0,1)$. 
+\end{enumerate}
+
+Note that overlapping clusters is okay theoretically and makes sense biologically. 
+
+Having established our prior, we sample from the posterior by using a method heavily inspired by the one in \cite{stephens2000bayesian}. That is, we 
+construct a birth-death Markov chain with stationary distribution given by the posterior of the data. 
+
+
+\section{Tests}
+
+\subsection{Toy-data}
+
+\subsection{Real data}
+
+\subsection{Real data2}
+
+
+
+
+
+%%%% i use gillespie algorithm to simulate continuous time chain 
+
+
+\bibliography{bibliography}
+
+
+\end{document}
+
+
