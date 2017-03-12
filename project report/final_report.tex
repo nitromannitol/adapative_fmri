@@ -61,7 +61,7 @@ which places most of its mass around $0$.  We can encode these approximate belie
 \end{equation}
 
 
-For lack of time, we did not put priors on the hyper-parameters in the generative prior. Also, note that in this model, it is possible for clusters to overlap. This is an intentional choice asit allows for greater freedom in cluster shape. Furthemore, biologically, if each cluster corresponds to a role, it's plausible that regions of the brain play multiple roles, and hence
+For lack of time, we did not put priors on the hyper-parameters in the generative prior. Also, note that in this model, it is possible for clusters to overlap. This is an intentional choice as it allows for greater freedom in cluster shape. Furthermore, biologically, if each cluster corresponds to a role, it's plausible that regions of the brain play multiple roles, and hence
 are in multiple clusters. 
 
 \subsection{Inventing the chain}
@@ -78,24 +78,26 @@ L(\mathcal{C}, \mathcal{B}) = P( p^n | \mathcal{C}, \mathcal{B}) = \prod_{\mbox{
 
 To construct the chain,  we view each configuration of the model parameters as a point in an infinite dimensional parameter space. 
 We construct a  walk over this infinite dimensional parameter space which converges to what is known as a marked point process. 
-A marked point process is a formal way to denote a posterior distribution over an infinite state space. ? 
+A marked point process is a formal way to denote a posterior distribution over an infinite state space. 
 This is a probabilistic way to denote the posterior distribution. 
-You can think of it as the posterior likelihood. 
+You can think of it as the posterior likelihood. We simulate real time using Gillespie algorithm.
 
-We simulate real time using Gillespie algorithm.
+
+
+To do: insert details of the method. 
 
 
 \subsection{Proving it works}
-
-
+I'll try to do this sometime in the next few days, maybe not before the presentation. 
 
 
 
 \begin{theorem}
-Hey micol 
+Given the prior in 2.2, the chain converges to a stationary distribution. 
 \end{theorem}
 \begin{proof} 
-trivial 
+To do. Chain is irreducible. Need to prove that it satisfies detailed balance condition 
+listed in end of paper. 
 \end{proof}
 
 
@@ -103,15 +105,20 @@ trivial
 \section{Discovering signals}
 
 \subsection{Toy-data}
+To do:  Discuss implementation details, like choice of prior and how this affects performance on the toy data. 
+
 
 \subsection{Real data}
-
+To do: Discuss where the dataset came from. 
+To do: Also discuss implementation details and compare performance to the p-filter. This is partly done 
 
 \section{Extensions}
 Don't need to work with just p-values, can work with intensities directly by specifying appropriate priors for null distributions
 and for signal distributions. 
 
 Update the radius prior to allow for a vector in arbitrary dimensions instead of just one fixed. 
+
+Put priors on the hyperparameters and maximize this priors using EM. That is uniform prior over hyperhyperparameters. 
 
 %%%% i use gillespie algorithm to simulate continuous time chain 
 
