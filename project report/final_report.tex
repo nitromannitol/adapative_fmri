@@ -2,6 +2,8 @@
 \usepackage{fullpage,graphicx,psfrag,amsmath,amsfonts,verbatim}
 \usepackage[small,bf]{caption}
 \usepackage{hyperref}
+\usepackage{amsthm}
+
 
 \input defs.tex
 
@@ -26,50 +28,90 @@ of the brain associated with hunger or craving. To aid in this, fMRI readings ca
 
 An advantage of using fMRI is that it's a noninvasive procedure.  Due to this, there are many publicly available datasets \cite{poldrack2013toward}.
 However, analyzing fMRI data poses many statistical challenges, one of them being the multiple comparisons problem. 
- Any sampling procedure involves error.  Because there are typically hundreds of thousands voxels, it's likely that individual voxels 
- may have high readings, but not be statistically significant.  Also, the noise of a reading is typically dependent on location, \ie, it is heteroscedasticic.
- Identifying significant clusters (not just individual voxels) introduces an additional challenge. 
+ Any sampling procedure involves error.  Because there are typically thousands voxels, it's likely that individual voxels 
+ may have high readings, but not be statistically significant. Identifying significant clusters (not just individual voxels) introduces an additional challenge. 
  
- In this paper, we explore a way of estimating significant clusters in fMRI using a Bayesian method. 
+ In this paper, we explore a way of estimating significant clusters in fMRI using a Bayesian method.  The method and some theory is presented in the first 
+ section. In the second section, we test the method on simulated data and real data.
 
 \section{Method}
-%%word this better
+
+
+
+\subsection{Generative prior}
+First some notation. 
 Let $\mathcal{P} = [0,1]$ be our sample space and let $\mathcal{D}$ represent location-time space, (for example $\mathcal{D} = \reals^3 \times \reals^+$).
 Suppose we have $n$ data points $(p_1, d_1), \ldots, (p_n, d_n)$ where $p_i \in \mathcal{P}$ and $d_i \in \mathcal{D}$. 
 The p-value $p_i$ represents our belief in $d_i$ being a null feature. That is, our belief that the brain voxel at that point in time is not correlated 
-with the stimulus.  
+with the stimulus. 
 
-Signals (features associated with the stimulus) in fMRI data typically tend to be sparse.  That is, most of the $\omega_i$ are likely null signals (features not associated with the stimulus )
-and so are drawn from a $\Unif(0,1)$ distribution.  But, there are typically a few number of unknown signal clusters,  let's say $k$,
-which are clustered spatially in $\mathcal{D}$.  These $\omega_i$ are drawn from some $\Beta(1/\beta_j, \beta_j)$ distribution where $\beta_j > 2$ for $j = 1, \ldots, k$.  
-
-We encode these beliefs in the following prior for our data:
-\begin{enumerate}
-\item (number of signal clusters) $k \sim$ Truncated Poisson$(\lambda_i,  1, k_{max})$
-\item (signal centers)  $c_j \sim \Unif(\mathcal{D})$ for $j = 1, \ldots, k$
-\item (signal radius )  $r_j \sim \mbox{Truncated Normal}(2,10,2,10)$ for $j = 1, \ldots k$
-\item  (signal strength) $\beta_j \sim \Unif(2,10)$ for $j = 1, \ldots, k$. 
-\item (data in signal clusters) $x_i \sim \Beta(1/\beta_j, \beta_j)$, where $x_i$ is in cluster $j$
-\item (data not in signal clusters) $x_i \sim \Unif(0,1)$. 
-\end{enumerate}
-
-Note that overlapping clusters is okay theoretically and makes sense biologically. 
-
-Having established our prior, we sample from the posterior by using a method heavily inspired by the one in \cite{stephens2000bayesian}. That is, we 
-construct a birth-death Markov chain with stationary distribution given by the posterior of the data. 
+Signals in fMRI data typically tend to be sparse. That is, most of the $p_i$ are likely null features and so are drawn from a $\Unif(0,1)$ distribution. 
+There is a small, but unknown, number of unknown signal clusters which are located spatially in $\mathcal{D}$.  
+Each of the $p$-values within each cluster is drawn from a probability distribution on $\mathcal{P}$
+which places most of its mass around $0$.  We can encode these approximate beliefs about fMRI data in the following generative prior. 
+\begin{equation}
+\begin{split}
+\mbox{number of signal clusters: } & k \sim \mbox{Truncated Poisson}(\lambda,  1, k_{max}) \\
+\mbox{signal centers: }&  c_j \sim \Unif(\mathcal{D}) \mbox{ for $j = 1, \ldots, k$} \\
+\mbox{signal radius: }&  r_j \sim \mbox{Truncated Normal}(\mu,\sigma,r_{min},r_{max}) \mbox{ for $j = 1, \ldots k$} \\
+\mbox{signal strength: }& \beta_j \sim \Unif(\beta_{min},\beta_{max}) \mbox{ for $j = 1, \ldots, k$} \\
+\mbox{p-values in signal clusters: }& p_i \sim \Beta(\frac{1}{\beta_j}, \beta_j), \mbox{when $x_i$ is in cluster $j$} \\
+\mbox{p-values not in signal clusters: }& p_i \sim \Unif(0,1). 
+\end{split}
+\end{equation}
 
 
-\section{Tests}
+For lack of time, we did not put priors on the hyper-parameters in the generative prior. Also, note that in this model, it is possible for clusters to overlap. This is an intentional choice asit allows for greater freedom in cluster shape. Furthemore, biologically, if each cluster corresponds to a role, it's plausible that regions of the brain play multiple roles, and hence
+are in multiple clusters. 
+
+\subsection{Inventing the chain}
+
+Having established our prior, we sample from the posterior by using a method heavily inspired by the one in \cite{stephens2000bayesian}. 
+In the aforementioned paper, Matthew Stephens constructs a Markov birth-death process to determine the number of unknown components in a mixture model. Our prior is not a mixture model, so we can't use his method directly. However, we can construct a birth-death Markov process similar to his 
+which (assuming the generative prior) has stationary distribution given by the posterior likelihood of the data. 
+
+Some notation first: let $\mathcal{C}$ denote the set of clusters (spheres parameterized by centers and radii) and let $\mathcal{B}$ denote the set of $\beta_i$ from which 
+we parameterize the $\beta$ distributions. Then, the likelihood of a set of $n$ p-values, $p^n$ is given by
+ \[
+L(\mathcal{C}, \mathcal{B}) = P( p^n | \mathcal{C}, \mathcal{B}) = \prod_{\mbox{$p_{i_j}$ in cluster $j$}}  \frac{ p_{i_j}^{\frac{1}{\beta_j} - 1} (1 - p_{i_j})^{\beta_j-1}}{B(\frac{1}{\beta_j}. \beta_j)},
+\]
+
+To construct the chain,  we view each configuration of the model parameters as a point in an infinite dimensional parameter space. 
+We construct a  walk over this infinite dimensional parameter space which converges to what is known as a marked point process. 
+A marked point process is a formal way to denote a posterior distribution over an infinite state space. ? 
+This is a probabilistic way to denote the posterior distribution. 
+You can think of it as the posterior likelihood. 
+
+We simulate real time using Gillespie algorithm.
+
+
+\subsection{Proving it works}
+
+
+
+
+
+\begin{theorem}
+Hey micol 
+\end{theorem}
+\begin{proof} 
+trivial 
+\end{proof}
+
+
+
+\section{Discovering signals}
 
 \subsection{Toy-data}
 
 \subsection{Real data}
 
-\subsection{Real data2}
 
+\section{Extensions}
+Don't need to work with just p-values, can work with intensities directly by specifying appropriate priors for null distributions
+and for signal distributions. 
 
-
-
+Update the radius prior to allow for a vector in arbitrary dimensions instead of just one fixed. 
 
 %%%% i use gillespie algorithm to simulate continuous time chain 
 
