@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.3.2)  14 MAR 2017 11:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.3.2)  14 MAR 2017 12:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1019,24 +1019,24 @@ LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
 ] [10
 
 ]
-<../BDC_gridactual.png, id=77, 474.77374pt x 351.3125pt>
+<../BDC_gridactual.png, id=77, 462.528pt x 346.896pt>
 File: ../BDC_gridactual.png Graphic file (type png)
 
 <use ../BDC_gridactual.png>
 Package pdftex.def Info: ../BDC_gridactual.png used on input line 134.
-(pdftex.def)             Requested size: 101.17604pt x 86.72362pt.
+(pdftex.def)             Requested size: 101.17775pt x 86.72379pt.
 
-Overfull \hbox (8.98814pt too wide) in paragraph at lines 134--134
+Overfull \hbox (8.98985pt too wide) in paragraph at lines 134--134
  [][] 
  []
 
-<../BDC_grid1.png, id=79, 472.76625pt x 348.30125pt>
+<../BDC_grid1.png, id=79, 462.528pt x 346.896pt>
 File: ../BDC_grid1.png Graphic file (type png)
  <use ../BDC_grid1.png>
 Package pdftex.def Info: ../BDC_grid1.png used on input line 134.
-(pdftex.def)             Requested size: 101.17386pt x 86.72432pt.
+(pdftex.def)             Requested size: 101.17775pt x 86.72379pt.
 
-Overfull \hbox (8.98596pt too wide) in paragraph at lines 134--134
+Overfull \hbox (8.98985pt too wide) in paragraph at lines 134--134
  [][] 
  []
 
@@ -1057,18 +1057,18 @@ File: ../BDC_gridactual.png Graphic file (type png)
 
 <use ../BDC_gridactual.png>
 Package pdftex.def Info: ../BDC_gridactual.png used on input line 152.
-(pdftex.def)             Requested size: 101.17604pt x 86.72362pt.
+(pdftex.def)             Requested size: 101.17775pt x 86.72379pt.
 
-Overfull \hbox (8.98814pt too wide) in paragraph at lines 152--152
+Overfull \hbox (8.98985pt too wide) in paragraph at lines 152--152
  [][] 
  []
 
 File: ../BDC_grid1.png Graphic file (type png)
 <use ../BDC_grid1.png>
 Package pdftex.def Info: ../BDC_grid1.png used on input line 152.
-(pdftex.def)             Requested size: 101.17386pt x 86.72432pt.
+(pdftex.def)             Requested size: 101.17775pt x 86.72379pt.
 
-Overfull \hbox (8.98596pt too wide) in paragraph at lines 152--152
+Overfull \hbox (8.98985pt too wide) in paragraph at lines 152--152
  [][] 
  []
 
@@ -1078,9 +1078,9 @@ Overfull \hbox (8.98596pt too wide) in paragraph at lines 152--152
 File: ../BDC_gridactual.png Graphic file (type png)
  <use ../BDC_gridactual.png>
 Package pdftex.def Info: ../BDC_gridactual.png used on input line 176.
-(pdftex.def)             Requested size: 101.17604pt x 86.72362pt.
+(pdftex.def)             Requested size: 101.17775pt x 93.94899pt.
 
-Overfull \hbox (8.98814pt too wide) in paragraph at lines 176--176
+Overfull \hbox (8.98985pt too wide) in paragraph at lines 176--176
  [][] 
  []
 
@@ -1113,9 +1113,9 @@ File: ../BDC_gridactual.png Graphic file (type png)
 
 <use ../BDC_gridactual.png>
 Package pdftex.def Info: ../BDC_gridactual.png used on input line 199.
-(pdftex.def)             Requested size: 101.17604pt x 86.72362pt.
+(pdftex.def)             Requested size: 101.17775pt x 93.94899pt.
 
-Overfull \hbox (8.98814pt too wide) in paragraph at lines 199--199
+Overfull \hbox (8.98985pt too wide) in paragraph at lines 199--199
  [][] 
  []
 
@@ -1145,9 +1145,9 @@ Overfull \hbox (8.98596pt too wide) in paragraph at lines 199--199
 File: ../BDC_gridactual.png Graphic file (type png)
  <use ../BDC_gridactual.png>
 Package pdftex.def Info: ../BDC_gridactual.png used on input line 223.
-(pdftex.def)             Requested size: 101.17604pt x 86.72362pt.
+(pdftex.def)             Requested size: 101.17775pt x 93.94899pt.
 
-Overfull \hbox (8.98814pt too wide) in paragraph at lines 223--223
+Overfull \hbox (8.98985pt too wide) in paragraph at lines 223--223
  [][] 
  []
 
@@ -1181,9 +1181,9 @@ File: ../BDC_gridactual.png Graphic file (type png)
 
 <use ../BDC_gridactual.png>
 Package pdftex.def Info: ../BDC_gridactual.png used on input line 247.
-(pdftex.def)             Requested size: 101.17604pt x 86.72362pt.
+(pdftex.def)             Requested size: 101.17775pt x 93.94899pt.
 
-Overfull \hbox (8.98814pt too wide) in paragraph at lines 247--247
+Overfull \hbox (8.98985pt too wide) in paragraph at lines 247--247
  [][] 
  []
 
@@ -1222,9 +1222,9 @@ m/n/9 ;
 File: ../BDC_gridactual.png Graphic file (type png)
  <use ../BDC_gridactual.png>
 Package pdftex.def Info: ../BDC_gridactual.png used on input line 271.
-(pdftex.def)             Requested size: 101.17604pt x 86.72362pt.
+(pdftex.def)             Requested size: 101.17775pt x 93.94899pt.
 
-Overfull \hbox (8.98814pt too wide) in paragraph at lines 271--271
+Overfull \hbox (8.98985pt too wide) in paragraph at lines 271--271
  [][] 
  []
 
@@ -1295,65 +1295,159 @@ Overfull \hbox (8.98573pt too wide) in paragraph at lines 294--294
 [18
 
  <../simulation_data3.jpg> <../p_filterondataset3.jpg> <../best3.jpg>]
-<../BDC_predictions.jpg, id=152, 481.8pt x 481.8pt>
-File: ../BDC_predictions.jpg Graphic file (type jpg)
+File: ../simulation_data3.jpg Graphic file (type jpg)
 
-<use ../BDC_predictions.jpg>
-Package pdftex.def Info: ../BDC_predictions.jpg used on input line 312.
-(pdftex.def)             Requested size: 144.53375pt x 130.08038pt.
+<use ../simulation_data3.jpg>
+Package pdftex.def Info: ../simulation_data3.jpg used on input line 317.
+(pdftex.def)             Requested size: 101.17363pt x 101.17363pt.
 
-<../BDC_OneSlice.png, id=153, 460.72125pt x 348.30125pt>
-File: ../BDC_OneSlice.png Graphic file (type png)
-
-<use ../BDC_OneSlice.png>
-Package pdftex.def Info: ../BDC_OneSlice.png used on input line 312.
-(pdftex.def)             Requested size: 101.17621pt x 86.72432pt.
- [19
-
- <../BDC_predictions.jpg> <../BDC_OneSlice.png>]
-<../BDC_AllSlices.png, id=161, 711.65875pt x 435.6275pt>
-File: ../BDC_AllSlices.png Graphic file (type png)
-
-<use ../BDC_AllSlices.png>
-Package pdftex.def Info: ../BDC_AllSlices.png used on input line 319.
-(pdftex.def)             Requested size: 295.14827pt x 180.67499pt.
- [20
-
- <../BDC_AllSlices.png>]
-File: ../BDC_predictions.jpg Graphic file (type jpg)
-
-<use ../BDC_predictions.jpg>
-Package pdftex.def Info: ../BDC_predictions.jpg used on input line 341.
-(pdftex.def)             Requested size: 101.17363pt x 101.17755pt.
-
-Overfull \hbox (8.98573pt too wide) in paragraph at lines 341--341
+Overfull \hbox (8.98573pt too wide) in paragraph at lines 317--317
  [][] 
  []
 
-<../BH_predictions.jpg, id=168, 481.8pt x 481.8pt>
-File: ../BH_predictions.jpg Graphic file (type jpg)
- <use ../BH_predictions.jpg>
-Package pdftex.def Info: ../BH_predictions.jpg used on input line 341.
-(pdftex.def)             Requested size: 101.17363pt x 101.17755pt.
+<../dataset3beta3.jpg, id=152, 481.8pt x 481.8pt>
+File: ../dataset3beta3.jpg Graphic file (type jpg)
+ <use ../dataset3beta3.jpg>
+Package pdftex.def Info: ../dataset3beta3.jpg used on input line 317.
+(pdftex.def)             Requested size: 101.17363pt x 101.17363pt.
 
-Overfull \hbox (8.98573pt too wide) in paragraph at lines 341--341
+Overfull \hbox (8.98573pt too wide) in paragraph at lines 317--317
  [][] 
  []
 
-<../pfilter_predictions2.jpg, id=169, 481.8pt x 481.8pt>
-File: ../pfilter_predictions2.jpg Graphic file (type jpg)
+File: ../best3.jpg Graphic file (type jpg)
+<use ../best3.jpg>
+Package pdftex.def Info: ../best3.jpg used on input line 317.
+(pdftex.def)             Requested size: 101.17363pt x 101.17363pt.
 
-<use ../pfilter_predictions2.jpg>
-Package pdftex.def Info: ../pfilter_predictions2.jpg used on input line 341.
-(pdftex.def)             Requested size: 101.17363pt x 101.17755pt.
+Overfull \hbox (8.98573pt too wide) in paragraph at lines 317--317
+ [][] 
+ []
 
-Overfull \hbox (8.98573pt too wide) in paragraph at lines 341--341
+[19
+
+ <../dataset3beta3.jpg>]
+File: ../simulation_data3.jpg Graphic file (type jpg)
+ <use ../simulation_data3.jpg>
+Package pdftex.def Info: ../simulation_data3.jpg used on input line 339.
+(pdftex.def)             Requested size: 101.17363pt x 101.17363pt.
+
+Overfull \hbox (8.98573pt too wide) in paragraph at lines 339--339
+ [][] 
+ []
+
+<../radius10.jpg, id=159, 481.8pt x 481.8pt>
+File: ../radius10.jpg Graphic file (type jpg)
+ <use ../radius10.jpg>
+Package pdftex.def Info: ../radius10.jpg used on input line 339.
+(pdftex.def)             Requested size: 101.17363pt x 101.17363pt.
+
+Overfull \hbox (8.98573pt too wide) in paragraph at lines 339--339
+ [][] 
+ []
+
+File: ../best3.jpg Graphic file (type jpg)
+<use ../best3.jpg>
+Package pdftex.def Info: ../best3.jpg used on input line 339.
+(pdftex.def)             Requested size: 101.17363pt x 101.17363pt.
+
+Overfull \hbox (8.98573pt too wide) in paragraph at lines 339--339
+ [][] 
+ []
+
+[20
+
+ <../radius10.jpg>]
+File: ../simulation_data3.jpg Graphic file (type jpg)
+ <use ../simulation_data3.jpg>
+Package pdftex.def Info: ../simulation_data3.jpg used on input line 362.
+(pdftex.def)             Requested size: 101.17363pt x 101.17363pt.
+
+Overfull \hbox (8.98573pt too wide) in paragraph at lines 362--362
+ [][] 
+ []
+
+<../datase3_poi50.jpg, id=165, 481.8pt x 481.8pt>
+File: ../datase3_poi50.jpg Graphic file (type jpg)
+ <use ../datase3_poi50.jpg>
+Package pdftex.def Info: ../datase3_poi50.jpg used on input line 362.
+(pdftex.def)             Requested size: 101.17363pt x 101.17363pt.
+
+Overfull \hbox (8.98573pt too wide) in paragraph at lines 362--362
+ [][] 
+ []
+
+File: ../best3.jpg Graphic file (type jpg)
+<use ../best3.jpg>
+Package pdftex.def Info: ../best3.jpg used on input line 362.
+(pdftex.def)             Requested size: 101.17363pt x 101.17363pt.
+
+Overfull \hbox (8.98573pt too wide) in paragraph at lines 362--362
  [][] 
  []
 
 [21
 
- <../BH_predictions.jpg> <../pfilter_predictions2.jpg>] [22
+ <../datase3_poi50.jpg>]
+<../BDC_predictions.jpg, id=171, 481.8pt x 481.8pt>
+File: ../BDC_predictions.jpg Graphic file (type jpg)
+
+<use ../BDC_predictions.jpg>
+Package pdftex.def Info: ../BDC_predictions.jpg used on input line 380.
+(pdftex.def)             Requested size: 144.53375pt x 130.08038pt.
+
+<../BDC_OneSlice.png, id=172, 460.72125pt x 348.30125pt>
+File: ../BDC_OneSlice.png Graphic file (type png)
+
+<use ../BDC_OneSlice.png>
+Package pdftex.def Info: ../BDC_OneSlice.png used on input line 380.
+(pdftex.def)             Requested size: 101.17621pt x 86.72432pt.
+ [22
+
+ <../BDC_predictions.jpg> <../BDC_OneSlice.png>]
+<../BDC_AllSlices.png, id=179, 711.65875pt x 435.6275pt>
+File: ../BDC_AllSlices.png Graphic file (type png)
+
+<use ../BDC_AllSlices.png>
+Package pdftex.def Info: ../BDC_AllSlices.png used on input line 386.
+(pdftex.def)             Requested size: 295.14827pt x 180.67499pt.
+ [23
+
+ <../BDC_AllSlices.png>]
+File: ../BDC_predictions.jpg Graphic file (type jpg)
+
+<use ../BDC_predictions.jpg>
+Package pdftex.def Info: ../BDC_predictions.jpg used on input line 408.
+(pdftex.def)             Requested size: 101.17363pt x 101.17755pt.
+
+Overfull \hbox (8.98573pt too wide) in paragraph at lines 408--408
+ [][] 
+ []
+
+<../BH_predictions.jpg, id=186, 481.8pt x 481.8pt>
+File: ../BH_predictions.jpg Graphic file (type jpg)
+ <use ../BH_predictions.jpg>
+Package pdftex.def Info: ../BH_predictions.jpg used on input line 408.
+(pdftex.def)             Requested size: 101.17363pt x 101.17755pt.
+
+Overfull \hbox (8.98573pt too wide) in paragraph at lines 408--408
+ [][] 
+ []
+
+<../pfilter_predictions2.jpg, id=187, 481.8pt x 481.8pt>
+File: ../pfilter_predictions2.jpg Graphic file (type jpg)
+
+<use ../pfilter_predictions2.jpg>
+Package pdftex.def Info: ../pfilter_predictions2.jpg used on input line 408.
+(pdftex.def)             Requested size: 101.17363pt x 101.17755pt.
+
+Overfull \hbox (8.98573pt too wide) in paragraph at lines 408--408
+ [][] 
+ []
+
+[24
+
+ <../BH_predictions.jpg> <../pfilter_predictions2.jpg>] [25
 
 ]
 \tf@nav=\write7
@@ -1365,12 +1459,12 @@ Overfull \hbox (8.98573pt too wide) in paragraph at lines 341--341
 \tf@snm=\write9
 \openout9 = `final_presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 356.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 356.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 423.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 423.
 
 (./final_presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 356.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 356.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 423.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 423.
 Package rerunfilecheck Info: File `final_presentation.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -1378,13 +1472,13 @@ Package rerunfilecheck Info: File `final_presentation.out' has not changed.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 356.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 423.
  ) 
 Here is how much of TeX's memory you used:
- 20725 strings out of 494447
- 410071 string characters out of 6166767
+ 20752 strings out of 494447
+ 410499 string characters out of 6166767
  469661 words of memory out of 5000000
- 23541 multiletter control sequences out of 15000+600000
+ 23559 multiletter control sequences out of 15000+600000
  11448 words of font info for 44 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
  48i,13n,54p,447b,626s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1405,10 +1499,10 @@ ist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016basic/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2016basic/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2016bas
 ic/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb>
-Output written on final_presentation.pdf (22 pages, 1936703 bytes).
+Output written on final_presentation.pdf (25 pages, 2062186 bytes).
 PDF statistics:
- 244 PDF objects out of 1000 (max. 8388607)
- 160 compressed objects within 2 object streams
- 45 named destinations out of 1000 (max. 500000)
- 148 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 264 PDF objects out of 1000 (max. 8388607)
+ 174 compressed objects within 2 object streams
+ 51 named destinations out of 1000 (max. 500000)
+ 163 words of extra memory for PDF output out of 10000 (max. 10000000)
 
