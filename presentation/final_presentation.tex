@@ -363,6 +363,53 @@ Again, let's make signal stronger
 \end{figure}
 \end{frame}
 
+\section{Example: fMRI data}
+
+\begin{frame}{Performance on real fMRI data}
+\begin{figure}[t!]
+    \centering
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[height=1.8in, width=2in]{../BDC_predictions.jpg}
+        \caption{3-D view}
+    \end{subfigure}%
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[height=1.8in, width=2in]{../BDC_OneSlice}
+        \caption{2-D view: one slice}
+    \end{subfigure}
+    \caption{fMRI data}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Performance on real fMRI data (continued)}
+\centering
+\includegraphics[height=2.5in]{../BDC_AllSlices}
+\end{frame}
+
+\begin{frame}{Performance on real fMRI data (continued): Comparison to p-filter}
+\begin{figure}[t!]
+    \centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.4in]{../BDC_predictions.jpg}
+        \caption{Birth death chain}
+    \end{subfigure}%
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.4in]{../BH_predictions.jpg}
+        \caption{BH}
+    \end{subfigure}%
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.4in]{../pfilter_predictions2.jpg}
+        \caption{p-filter with 2 groups, $\alpha$ = 0.2,0.3}
+    \end{subfigure}
+    \caption{fMRI data}
+\end{figure}
+\end{frame}
+
 \begin{frame}{Conclusion and Future Work}
 \BIT
 \item presented a nonparametric-bayesian method to adaptively identify clusters of signals.

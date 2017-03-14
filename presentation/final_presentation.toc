@@ -2,3 +2,4 @@
 \beamer@sectionintoc {1}{Introduction}{2}{0}{1}
 \beamer@sectionintoc {2}{Method }{6}{0}{2}
 \beamer@sectionintoc {3}{Example: simulated data}{11}{0}{3}
+\beamer@sectionintoc {4}{Example: fMRI data}{24}{0}{4}
