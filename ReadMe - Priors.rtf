@@ -1,0 +1,98 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf810
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww16220\viewh13640\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 # 1. Using priors same with the ones to generate the data\
+Clusters_priordist = Truncated(Poisson(50), 1, 100)\
+radius_prior = TruncatedNormal(7, 2, 5, 10); \
+mu = 8; \
+sigma = 5; \
+Beta_priordist = TruncatedNormal(mu, sigma, 2, 200);\
+\
+\
+\
+# 2. Much stronger signal by changing beta prior. keeping other priors same\
+Clusters_priordist = Truncated(Poisson(50), 1, 100)\
+radius_prior = TruncatedNormal(7, 2, 5, 10); \
+
+\b mu = 30; \
+sigma = 3; 
+\b0 \
+Beta_priordist = TruncatedNormal(mu, sigma, 2, 200);\
+\
+# 3. Much weaker signals compared to case 1. keeping other priors same\
+Clusters_priordist = Truncated(Poisson(50), 1, 100)\
+radius_prior = TruncatedNormal(7, 2, 5, 10); \
+
+\b mu = 2; \
+sigma = 1; 
+\b0 \
+Beta_priordist = TruncatedNormal(mu, sigma, 2, 200);\
+\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 # 4.1 Make radius prior bigger\
+Clusters_priordist = Truncated(Poisson(50), 1, 100)\
+
+\b radius_prior = TruncatedNormal(10, 2, 7, 13); 
+\b0 \
+mu = 8; \
+sigma = 5; \
+Beta_priordist = TruncatedNormal(mu, sigma, 2, 200);\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 # 4.2 Keep strong signal and make radius prior bigger\
+Clusters_priordist = Truncated(Poisson(50), 1, 100)\
+
+\b radius_prior = TruncatedNormal(10, 2, 7, 13); \
+mu = 30; \
+sigma = 3; 
+\b0 \
+Beta_priordist = TruncatedNormal(mu, sigma, 2, 200);\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 # 5.1 Make radius prior smaller\
+Clusters_priordist = Truncated(Poisson(50), 1, 100)\
+
+\b radius_prior = TruncatedNormal(2, 2, 1, 10); 
+\b0 \
+mu = 8; \
+sigma = 5; \
+Beta_priordist = TruncatedNormal(mu, sigma, 2, 200);\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+# 5.2 Keep strong signal and make radius prior smaller\
+Clusters_priordist = Truncated(Poisson(50), 1, 100)\
+
+\b radius_prior = TruncatedNormal(2, 2, 1, 10); \
+mu = 30; \
+sigma = 3; 
+\b0 \
+Beta_priordist = TruncatedNormal(mu, sigma, 2, 200);\
+\
+\
+\
+# 6.1 Change cluster prior\
+
+\b Clusters_priordist = Truncated(Poisson(3), 1, 10)
+\b0 \
+radius_prior = TruncatedNormal(7, 2, 5, 10); \
+mu = 8; \
+sigma = 5; \
+Beta_priordist = TruncatedNormal(mu, sigma, 2, 200);\
+# 6.2 follows same logic with 4.2\'85and 5.2\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 # 7.1 Change cluster prior\
+
+\b Clusters_priordist = Truncated(Poisson(300), 1, 1000)
+\b0 \
+radius_prior = TruncatedNormal(7, 2, 5, 10); \
+mu = 8; \
+sigma = 5; \
+Beta_priordist = TruncatedNormal(mu, sigma, 2, 200);\
+#7.2 follows same logic with 4.2\'85and 5.2}
