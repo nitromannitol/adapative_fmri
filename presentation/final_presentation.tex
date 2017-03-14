@@ -107,7 +107,7 @@ University of Chicago}
 \item 100-by-100 grid with $k$=5 clusters of signals and the rest is null.
 \item The centers $C_k \sim$  uniform from the grid while being distinct for $k = 1, 2, ..., 5$
 \item The radius $R_k \sim T N (7, 2, 5, 10)$ for $k = 1, 2, ..., 5$
-\item Signals in clusters $p_{ki} \sim Beta(1, \beta_k)$ where $\beta_k \sim U (2, 5)$ for $k = 1, 2, ..., 5$
+\item Signals in clusters $p_{ki} \sim Beta(1, \beta_k)$ where $\beta_k \sim TN(8, 5, 2, 200)$ for $k = 1, 2, ..., 5$
 \EIT
 \end{frame}
 
@@ -139,51 +139,60 @@ University of Chicago}
     \centering
     \begin{subfigure}[t]{0.3\textwidth}
         \centering
-        \includegraphics[height=1.1in, width=1.4in]{../BDC_gridactual}
+        \includegraphics[height=1.2in, width=1.4in]{../BDC_gridactual}
         \caption{Actual grid}
     \end{subfigure}%
     \begin{subfigure}[t]{0.3\textwidth}
         \centering
-        \includegraphics[height=1.1in, width=1.4in]{../BDC_grid1}
-        \caption{default priors}
+        \includegraphics[height=1.2in, width=1.4in]{../BDC_grid1}
+        \caption{$k \sim Trun(Poi(50), 1, 100)$; $r \sim TN(7, 2, 5, 10)$; $\beta \sim TN(8, 5, 2, 200)$}
     \end{subfigure} %
-    \begin{subfigure}[t]{0.3\textwidth}
-        \centering
-        \includegraphics[height=1.1in, width=1.4in]{../BDC_grid2_strongsig}
-        \caption{ $\beta \sim TN(30, 3, 2, 200)$}
-    \end{subfigure}%
-        \begin{subfigure}[t]{0.3\textwidth}
-        \centering
-        \includegraphics[height=1.1in, width=1.4in]{../BDC_grid3_weaksig}
-        \caption{ $\beta \sim TN(2, 1, 2, 200)$}
-    \end{subfigure}
     \caption{Simulated data}
 \end{figure}
 \end{frame}
 
 
 \begin{frame}{Toy Data (continued): More on Priors}
+First, let's compare different priors on beta
 \begin{figure}[t!]
     \centering
     \begin{subfigure}[t]{0.3\textwidth}
         \centering
-        \includegraphics[height=1.1in, width=1.4in]{../BDC_gridactual}
+        \includegraphics[height=1.2in, width=1.4in]{../BDC_gridactual}
         \caption{Actual grid}
     \end{subfigure}%
     \begin{subfigure}[t]{0.3\textwidth}
         \centering
-        \includegraphics[height=1.1in, width=1.4in]{../BDC_grid1}
-        \caption{default priors}
-    \end{subfigure} %
-    \begin{subfigure}[t]{0.3\textwidth}
-        \centering
-        \includegraphics[height=1.1in, width=1.4in]{../BDC_grid4}
-        \caption{ $r \sim TN(10, 2, 7, 13)$}
+        \includegraphics[height=1.2in, width=1.4in]{../BDC_grid2_strongsig}
+        \caption{ $k \sim Trun(Poi(50), 1, 100)$; $r \sim TN(7, 2, 5, 10)$; $\beta \sim TN(30, 3, 2, 200)$}
     \end{subfigure}%
         \begin{subfigure}[t]{0.3\textwidth}
         \centering
-        \includegraphics[height=1.1in, width=1.4in]{../BDC_grid5}
-        \caption{ $r \sim TN(2, 2, 1, 10)$}
+        \includegraphics[height=1.2in, width=1.4in]{../BDC_grid3_weaksig}
+        \caption{ $k \sim Trun(Poi(50), 1, 100)$; $r \sim TN(7, 2, 5, 10)$; \textbf{$\beta \sim TN(2, 1, 2, 200)$}}
+    \end{subfigure}
+    \caption{Simulated data}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Toy Data (continued): More on Priors}
+Now, let's compare different priors on radius.
+\begin{figure}[t!]
+    \centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.2in, width=1.4in]{../BDC_gridactual}
+        \caption{Actual grid}
+    \end{subfigure}%
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.2in, width=1.4in]{../BDC_grid4}
+        \caption{ $k \sim Trun(Poi(50), 1, 100)$; $r \sim TN(10, 2, 7, 13)$; $\beta \sim TN(8, 5, 2, 200)$}
+    \end{subfigure}%
+        \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[height=1.2in, width=1.4in]{../BDC_grid5}
+        \caption{ $k \sim Trun(Poi(50), 1, 100)$; $r \sim TN(2, 2, 1, 10)$; $\beta \sim TN(8, 5, 2, 200)$}
     \end{subfigure}
     \caption{Simulated data}
 \end{figure}
@@ -196,23 +205,18 @@ What if we make signal stronger?
     \centering
     \begin{subfigure}[t]{0.3\textwidth}
         \centering
-        \includegraphics[height=1.1in, width=1.4in]{../BDC_gridactual}
+        \includegraphics[height=1.2in, width=1.4in]{../BDC_gridactual}
         \caption{Actual grid}
     \end{subfigure}%
     \begin{subfigure}[t]{0.3\textwidth}
         \centering
-        \includegraphics[height=1.1in, width=1.4in]{../BDC_grid1}
-        \caption{default priors}
-    \end{subfigure} %
-    \begin{subfigure}[t]{0.3\textwidth}
-        \centering
-        \includegraphics[height=1.1in, width=1.4in]{../BDC_grid4_bigradius_ss}
-        \caption{ $\beta \sim TN(30, 3, 2, 200)$; $r \sim TN(10, 2, 7, 13)$}
+        \includegraphics[height=1.2in, width=1.4in]{../BDC_grid4_bigradius_ss}
+        \caption{ $k \sim Trun(Poi(50), 1, 100)$; $r \sim TN(10, 2, 7, 13)$; $\beta \sim TN(30, 3, 2, 200)$}
     \end{subfigure}%
         \begin{subfigure}[t]{0.3\textwidth}
         \centering
-        \includegraphics[height=1.1in, width=1.4in]{../BDC_grid5_smallradius_ss}
-        \caption{ $\beta \sim TN(30, 3, 2, 200)$; $r \sim TN(2, 2, 1, 10)$}
+        \includegraphics[height=1.2in, width=1.4in]{../BDC_grid5_smallradius_ss}
+        \caption{ $k \sim Trun(Poi(50), 1, 100)$; $r \sim TN(2, 2, 1, 10)$; $\beta \sim TN(30, 3, 2, 200)$}
     \end{subfigure}
     \caption{Simulated data}
 \end{figure}
@@ -220,27 +224,23 @@ What if we make signal stronger?
 
 
 \begin{frame}{Toy Data (continued): More on Priors}
+Next, we change the priors on number of clusters.
 \begin{figure}[t!]
     \centering
     \begin{subfigure}[t]{0.3\textwidth}
         \centering
-        \includegraphics[height=1.1in, width=1.4in]{../BDC_gridactual}
+        \includegraphics[height=1.2in, width=1.4in]{../BDC_gridactual}
         \caption{Actual grid}
     \end{subfigure}%
     \begin{subfigure}[t]{0.3\textwidth}
         \centering
-        \includegraphics[height=1.1in, width=1.4in]{../BDC_grid1}
-        \caption{default priors}
-    \end{subfigure} %
-    \begin{subfigure}[t]{0.3\textwidth}
-        \centering
-        \includegraphics[height=1.1in, width=1.4in]{../BDC_grid7_c3}
-        \caption{ $k \sim Trun(Poi(3), 1, 10)$}
+        \includegraphics[height=1.2in, width=1.4in]{../BDC_grid7_c3}
+        \caption{ $k \sim Trun(Poi(3), 1, 10)$; $r \sim TN(7, 2, 5, 10)$; $\beta \sim TN(8, 5, 2, 200)$}
     \end{subfigure}%
         \begin{subfigure}[t]{0.3\textwidth}
         \centering
-        \includegraphics[height=1.1in, width=1.4in]{../BDC_grid8_c300}
-        \caption{ $k \sim Trun(Poi(300), 1, 1000)$}
+        \includegraphics[height=1.2in, width=1.4in]{../BDC_grid8_c300}
+        \caption{ $k \sim Trun(Poi(300), 1, 1000)$; $r \sim TN(7, 2, 5, 10)$; $\beta \sim TN(8, 5, 2, 200)$}
     \end{subfigure}
     \caption{Simulated data}
 \end{figure}
@@ -253,23 +253,18 @@ Again, let's make signal stronger
     \centering
     \begin{subfigure}[t]{0.3\textwidth}
         \centering
-        \includegraphics[height=1in, width=1.4in]{../BDC_gridactual}
+        \includegraphics[height=1.2in, width=1.4in]{../BDC_gridactual}
         \caption{Actual grid}
     \end{subfigure}%
     \begin{subfigure}[t]{0.3\textwidth}
         \centering
-        \includegraphics[height=1in, width=1.4in]{../BDC_grid1}
-        \caption{default priors}
-    \end{subfigure} %
-    \begin{subfigure}[t]{0.3\textwidth}
-        \centering
-        \includegraphics[height=1in, width=1.4in]{../BDC_grid7_c3_ss}
-        \caption{ $\beta \sim TN(30, 3, 2, 200)$; $k \sim Trun(Poi(3), 1, 10)$}
+        \includegraphics[height=1.2in, width=1.4in]{../BDC_grid7_c3_ss}
+        \caption{ $k \sim Trun(Poi(3), 1, 10)$; $r \sim TN(7, 2, 5, 10)$; $\beta \sim TN(30, 3, 2, 200)$}
     \end{subfigure}%
         \begin{subfigure}[t]{0.3\textwidth}
         \centering
-        \includegraphics[height=1in, width=1.4in]{../BDC_grid8_c300_ss}
-        \caption{ $\beta \sim TN(30, 3, 2, 200)$; $k \sim Trun(Poi(300), 1, 1000)$}
+        \includegraphics[height=1.2in, width=1.4in]{../BDC_grid8_c300_ss}
+        \caption{ $k \sim Trun(Poi(300), 1, 1000)$; $r \sim TN(7, 2, 5, 10)$; $\beta \sim TN(30, 3, 2, 200)$}
     \end{subfigure}
     \caption{Simulated data}
 \end{figure}
