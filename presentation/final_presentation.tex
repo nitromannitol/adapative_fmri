@@ -5,6 +5,8 @@
 
 \usepackage{psfrag,amsfonts,verbatim}
 \usepackage{amsthm}
+\captionsetup{compatibility=false}
+
 
 \input defs.tex
 \input slide_format.tex
@@ -27,87 +29,87 @@ University of Chicago}
 \titlepage
 }
 
-\begin{frame} {Project Goal}
+\section{Introduction}
+
+\begin{frame} {What is fMRI?}
 \BIT
-\item  Formulate a method which can adaptively identify clusters of signals in functional magnetic resonance imaging (fMRI) data.
-\item  Evaluate the proposed method by drawing comparison between it and the existing p-filter algorithm.
+\item  fMRI: functional magnetic resonance imaging 
+\item  measures the change in brain blood flow while subject is stimulated
+\item  data tends to look like (voxel, time, intensity of reading)
+\item  e.g., to identify regions of the brain associated with hunger, fMRI readings can be taken while hungry subjects are shown pictures of food.
 \EIT
 \end{frame}
 
-\begin{frame} {What is fMRI data?}
+\begin{frame} {Example}
+\begin{figure}
+\centering
+  \includegraphics[width=\linewidth, height = 2.5in]{../DSC-H0217_03}
+  \end{figure}
+\end{frame}
+
+
+\begin{frame} {Problems} 
 \BIT
-\item  fMRI data measures the change in brain blood flow associated with mental activity [HSM04].
-\item  fMRI data is in the form (voxel, time, intensity of reading).
-\item  Example: To identify regions of the brain associated with hunger, fMRI readings can be taken while hungry subjects are shown pictures of food.
-\item  Multiple comparison problem due to hundreds of thousands of voxels 
-\item  Identify significant clusters (not just individual voxels)
+\item  multiple comparison problem - thousands of readings over time and space 
+\item want to incorporate location and time information - want continuous significant regions, not voxels
+\item want to determine these significant regions adaptively
 \EIT
 \end{frame}
 
-\begin{frame} {What's our method}
-\BIT
-\item  Inspired by Stephens (2000), we describe a bayesian nonparametric method by creating a Markov birth-death process with stationary distribution to detect clusters of signals. 
-\item View each cluster as a point in parameter space.
-\item Posterior distribution of the parameters being stationary distribution.
-\item Theoretically, this method works for multiple-dimensional data which incorporates spatial and temporal information.
+\section{Method } 
 
+\begin{frame} {The idea}
+\BIT
+\item focus on data with p-values rather than intensities
+\item assume that data is generated according to a prior which induces clustering of significant p-values
+\item get the posterior distribution (somehow) 
+\item p-values which are in significant clusters are discoveries    
 \EIT
 \end{frame}
 
-\begin{frame} {Details of the Method: Priors}
+
+\begin{frame} {The prior we assumed}
 \BIT
-\item number of signal clusters:  $k \sim \mbox{Truncated Poisson}(\lambda,  1, k_{max})$.
-\item signal centers:   $c_j \sim U \mathcal{(D)}$ for $j = 1, ... , k$.
+\item number of signal clusters:  $k \sim \mbox{Truncated Poisson}(\lambda,  1, k_{max})$
+\item signal centers:   $c_j \sim \mbox{Uniform over location-time space}$ for $j = 1, ... , k$
 \item signal radius:  $r_j \sim \mbox{Truncated Normal}(\mu,\sigma,r_{min},r_{max}) \mbox{ for j = 1, \ldots k} $.
-\item signal strength:  $\beta_j \sim U(\beta_{min},\beta_{max}) \mbox{ for j = 1, \ldots, k} $.
-\item p-values in signal clusters:  $p_i \sim Beta(\frac{1}{\beta_j}, \beta_j)$, when $x_i$ is in cluster $j$.
-\item p-values not in signal clusters:  $p_i \sim U(0,1)$.
-\EIT
+\item signal strength:  $\beta_j \sim \mbox{Uniform}(\beta_{min},\beta_{max}) \mbox{ for j = 1, \ldots, k} $.
+\item p-values in signal clusters:  $p_i \sim \mbox{Beta}(\frac{1}{\beta_j}, \beta_j)$, when $x_i$ is in cluster $j$.
+\item p-values not in signal clusters:  $p_i \sim \mbox{Uniform}(0,1)$.
+\EIT %note that this allows for overlapping clusters for biological reasons etc. 
 \end{frame}
+%comment on how crazy it is to sample from the prior
 
-\begin{frame} {Details of the Method (continued): inventing the chain}
+\begin{frame}{How do we write down the posterior??} 
 \BIT
-\item Birth: generating a new cluster.
-\item Death: "killing" an existing cluster.
-\item Birth rate: constant $\lambda$ is pre-defined and independent of clusters.
-\item Death rate: $\mu_i$ depends on "current" clusters and is updated each step.
-\item Flip a weighted coin to decide birth (w/ prob $\frac{\lambda}{\lambda+\mu_i}$) or death (w/ prob $\frac{\mu_i}{\lambda+\mu_i}$).
-\EIT
-\end{frame}
-
-\begin{frame} {Details of the Method (continued): death rate calculation using likelihoods}
-\BIT 
-\item $K$ clusters with prior $Beta(\frac{1}{\beta_j}, \beta_j)$ for $j = 1,2, ..., K$. K itself is random with prior $F_K$.
-\item Label specify which cluster each data point belongs.
-\item Current cluster likelihood: $l = log L(data | Beta(\frac{1}{\beta_j}, \beta_i)'s, labels)$; $c = logL(K | F_K)$
-\item Cluster likelihood after "killing" cluster j: $l_{-j} = log L(data | Beta(\frac{1}{\beta_j}, \beta_i)'s, labels_{-j})$; $c_{-j} = logL(K-1 | F_K)$
-\item $u_j$ = $log(\lambda) + (l_{-j} - l) + (c_{-j} - log(K) - c)$ for $j = 1,2, ..., K$.
-\item $u$ = $\sum_{j=1}^K e^{u_j}$.
-\EIT
-\end{frame}
-
-\begin{frame} {Details of the Method (continued)}
-\BIT 
-\item At the end of each step, run metropolis-hasting algorithm to sample from the posterior of the beta distribution
-\item Purpose: TODO
-
+\item we don't - we sample from it
+\item  we invented a Markov chain, inspired by Stephens (2000), with posterior distribution given by the likelihood of the data 
+\item  the type of chain is a birth-death chain (over an infinite dimensional state space!)
 \EIT 
 \end{frame}
 
-\begin{frame} {Details of the Method (continued)}
+\begin{frame} {The rough algorithm}
 \BIT 
-\item Run the chain long enough before starting collect sample labels.
-\item Sample labels from evenly space grid along the chain to avoid autocorrelation.
-\item Average over sample labels to determine if it is signal or null.
+\item initialize clusters and labels randomly by sampling from the prior 
+\item  repeat the following 10,000 times
+\BIT
+\item flip a weighted coin to determine if a birth or death occurs
+\item if birth, add a new cluster randomly 
+\item if death, delete a cluster which doesn't explain the data well
+\EIT
+\item take the average of the last 5,000 labels to determine if a p-value is signal or null. 
 \EIT 
 \end{frame}
+
+
+\section{Example: simulated data} 
 
 \begin{frame} {Toy Data: Preliminaries}
 \BIT
 \item 100-by-100 grid with $k$=5 clusters of signals and the rest is null.
-\item The centers $C_k \sim$  uniform from the grid while being distinct for $k = 1, 2, ..., 5$
-\item The radius $R_k \sim T N (7, 2, 5, 10)$ for $k = 1, 2, ..., 5$
-\item Signals in clusters $p_{ki} \sim Beta(1, \beta_k)$ where $\beta_k \sim TN(8, 5, 2, 200)$ for $k = 1, 2, ..., 5$
+\item the centers $C_k \sim$  uniform from the grid while being distinct for $k = 1, 2, ..., 5$
+\item the radius $R_k \sim T N (7, 2, 5, 10)$ for $k = 1, 2, ..., 5$
+\item signals in clusters $p_{ki} \sim Beta(1, \beta_k)$ where $\beta_k \sim TN(8, 5, 2, 200)$ for $k = 1, 2, ..., 5$
 \EIT
 \end{frame}
 
@@ -127,7 +129,7 @@ University of Chicago}
     \begin{subfigure}[t]{0.3\textwidth}
         \centering
         \includegraphics[height=1.2in, width=1.4in]{../BH_toy_data}
-        \caption{p-filter}
+        \caption{BH}
     \end{subfigure}
     \caption{Simulated data}
 \end{figure}
@@ -361,58 +363,15 @@ Again, let's make signal stronger
 \end{figure}
 \end{frame}
 
-
-\begin{frame}{Performance on real fMRI data}
-\begin{figure}[t!]
-    \centering
-    \begin{subfigure}[t]{0.5\textwidth}
-        \centering
-        \includegraphics[height=1.8in, width=2in]{../BDC_predictions.jpg}
-        \caption{3-D view}
-    \end{subfigure}%
-    \begin{subfigure}[t]{0.5\textwidth}
-        \centering
-        \includegraphics[height=1.2in, width=1.4in]{../BDC_OneSlice}
-        \caption{2-D view: one slice}
-    \end{subfigure}
-    \caption{fMRI data}
-\end{figure}
-\end{frame}
-
-
-\begin{frame}{Performance on real fMRI data (continued)}
-\centering
-\includegraphics[height=2.5in]{../BDC_AllSlices}
-\end{frame}
-
-\begin{frame}{Performance on real fMRI data (continued): Comparison to p-filter}
-\begin{figure}[t!]
-    \centering
-    \begin{subfigure}[t]{0.3\textwidth}
-        \centering
-        \includegraphics[height=1.4in]{../BDC_predictions.jpg}
-        \caption{Birth death chain}
-    \end{subfigure}%
-    \begin{subfigure}[t]{0.3\textwidth}
-        \centering
-        \includegraphics[height=1.4in]{../BH_predictions.jpg}
-        \caption{BH}
-    \end{subfigure}%
-    \begin{subfigure}[t]{0.3\textwidth}
-        \centering
-        \includegraphics[height=1.4in]{../pfilter_predictions2.jpg}
-        \caption{p-filter with $\alpha$ = 0.2,0.3}
-    \end{subfigure}
-    \caption{fMRI data}
-\end{figure}
-\end{frame}
-
 \begin{frame}{Conclusion and Future Work}
 \BIT
-\item Formulated and tested a nonparametric bayesian method to adaptively identify clusters of signals.
-\item Showed promising results on both simulation and real fMRI data.
-\item Extend from p-values to intensities directly by specifying appropriate priors for null distributions and for signal distributions.
-\item Put priors on the hyper-parameters and maximize this priors using EM. That is uniform prior over hyper-parameters.
+\item presented a nonparametric-bayesian method to adaptively identify clusters of signals.
+\item it showed promising results on both simulation and real fMRI data.
+\item possible extensions
+\BIT 
+\item work with intensities directly by specifying appropriate priors for null distributions and for signal distributions.
+\item put priors on the hyper-parameters and maximize these priors using EM
+\EIT  
 \EIT
 \begin{center}
 \textbf{\large Thanks!}
