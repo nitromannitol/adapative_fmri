@@ -1,9 +1,0 @@
-In presentation, we tried on different priors and compared the results. Now we find that the results converge as long as we increase number of iterations(big enough, 10000 here). So the choice of prior will not effect results when number of iterations is big enough.
-
-The data set we used here is “simulation_data3.jpg” with prior k=8, beta=Unif(3,4), radius=TN(2,2,1,3) . The signals here are kind of weak, and we can see that p_filter doesn’t works well here(plot “p_filter on dataset3”).  
-
-We find a good prior of BDC, beta=TN(5,3,2,200), Cluster=T(poi(20),1,500),radius=TN(2,2,1,10), lamda=80, and iteration number is 500.(plot”best3_when_ite500.jpg”)
-
-We separately changed beta to TN(2,3,2,200)(plot”beta2.jpg”); radius to TN(10,2,5,10)(plot”radius10.jpg”); Cluster to Cluster=T(poi(50),1,500)(plot”poi50”). And find that the results are not so good as before. But when we increase number of iterations to 10000, all results(plot”ite10000_when_beta2”,”ite10000_when_radius10”,”ite10000_when_poi50”) converge to almost the true circumstance “simulation_data3.jpg”. Lastly randomly change priors the result is also good(plot”ite10000.jpg”, “ite3.10000”)
-
-So we can conclude that BDC converges as number of iterations increases(to large enough) no matter the priors. And when signals are weak and with small region, BDC has a better performance than filter.  
